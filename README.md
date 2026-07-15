@@ -2,6 +2,10 @@
 
 INRIX XD traffic analysis tool for FIFA World Cup 2026 US host venues.  
 
+## Live dashboard
+
+https://fifa-wc-2026-traffic-dashboard.vercel.app/ 
+
 ## Repo structure
 
 ```
