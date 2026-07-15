@@ -1,0 +1,313 @@
+/* ============================================================
+   style.css — FIFA WC 2026 Dashboard
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:          #f5f5f3;
+  --surface:     #ffffff;
+  --surface2:    #f0f0ed;
+  --text:        #0b0b0b;
+  --text2:       #52514e;
+  --textm:       #898781;
+  --border:      rgba(11,11,11,0.10);
+  --border2:     rgba(11,11,11,0.18);
+  --accent:      #2a78d6;
+  --accent-bg:   #E6F1FB;
+  --accent-text: #185FA5;
+  --green:       #1baf7a;
+  --green-bg:    #E1F5EE;
+  --green-text:  #0F6E56;
+  --amber:       #ba7517;
+  --amber-bg:    #FAEEDA;
+  --amber-text:  #854F0B;
+  --red:         #e24b4a;
+  --red-bg:      #FCEBEB;
+  --red-text:    #A32D2D;
+  --radius:      8px;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* ── Header ──────────────────────────────────────────────── */
+.header {
+  background: var(--surface);
+  border-bottom: 0.5px solid var(--border);
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.header-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 56px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.brand { display: flex; align-items: center; gap: 12px; }
+.brand-icon {
+  width: 34px; height: 34px;
+  background: #1a6b2e;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 17px; flex-shrink: 0;
+}
+.brand-title { font-size: 15px; font-weight: 600; color: var(--text); }
+.brand-sub   { font-size: 11px; color: var(--text2); }
+.nav-tabs    { display: flex; gap: 2px; }
+.nav-tab {
+  padding: 6px 13px;
+  border: none; background: transparent;
+  font-size: 13px; color: var(--text2);
+  cursor: pointer; border-radius: var(--radius);
+  font-family: inherit;
+  transition: background 0.12s, color 0.12s;
+}
+.nav-tab:hover  { background: var(--surface2); }
+.nav-tab.active { background: var(--accent-bg); color: var(--accent-text); font-weight: 500; }
+
+/* ── Layout ──────────────────────────────────────────────── */
+.main { max-width: 1280px; margin: 0 auto; padding: 20px 24px; }
+
+/* ── KPI row ─────────────────────────────────────────────── */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 10px;
+  margin-bottom: 22px;
+}
+.kpi {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  border: 0.5px solid var(--border);
+}
+.kpi-label {
+  font-size: 10px; color: var(--text2);
+  font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.05em; margin-bottom: 5px;
+}
+.kpi-val    { font-size: 24px; font-weight: 600; color: var(--text); line-height: 1; }
+.kpi-val.sm { font-size: 15px; }
+.kpi-sub    { font-size: 11px; color: var(--textm); margin-top: 3px; }
+
+/* ── Tab panels ──────────────────────────────────────────── */
+.tab-panel         { display: none; }
+.tab-panel.active  { display: block; }
+
+/* ── Section label ───────────────────────────────────────── */
+.section-label {
+  font-size: 10px; font-weight: 700; color: var(--text2);
+  text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px;
+}
+
+/* ── Match list / round blocks ───────────────────────────── */
+.round-block   { margin-bottom: 22px; }
+.round-header  { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.round-pill    { font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.02em; }
+.pill-r32  { background: #E6F1FB; color: #185FA5; }
+.pill-r16  { background: #E1F5EE; color: #0F6E56; }
+.pill-qf   { background: #FAEEDA; color: #854F0B; }
+.round-count { font-size: 11px; color: var(--textm); }
+
+.match-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(192px, 1fr)); gap: 8px; }
+
+.match-card {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 12px;
+  cursor: pointer;
+  transition: border-color 0.12s;
+}
+.match-card:hover   { border-color: var(--accent); }
+.match-card.active  { border: 1.5px solid var(--accent); background: var(--accent-bg); }
+
+.match-no    { font-size: 10px; color: var(--textm); margin-bottom: 5px; }
+.match-teams { display: flex; align-items: center; justify-content: space-between; margin-bottom: 5px; gap: 4px; }
+.team-name   { font-size: 12px; font-weight: 600; color: var(--text); max-width: 76px; line-height: 1.2; }
+.team-name.right { text-align: right; }
+.vs-badge    { font-size: 10px; color: var(--textm); background: var(--surface2); padding: 2px 6px; border-radius: 4px; flex-shrink: 0; }
+.match-meta  { font-size: 11px; color: var(--text2); }
+.match-venue { font-size: 10px; color: var(--textm); margin-top: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* ── Match detail panel ──────────────────────────────────── */
+.detail-panel { background: var(--surface); border: 0.5px solid var(--border); border-radius: 12px; padding: 18px; margin-bottom: 22px; display: none; }
+.detail-panel.open { display: block; }
+.dp-top  { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 14px; }
+.dp-title { font-size: 16px; font-weight: 600; color: var(--text); }
+.dp-stage { font-size: 12px; color: var(--text2); margin-top: 1px; }
+.dp-close { background: transparent; border: none; color: var(--textm); cursor: pointer; font-size: 20px; font-family: inherit; padding: 0 4px; }
+.dp-cols  { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.dp-team-card { background: var(--surface2); border-radius: var(--radius); padding: 12px; border: 0.5px solid var(--border); }
+.dp-team-flag { font-size: 26px; margin-bottom: 4px; }
+.dp-team-name { font-size: 14px; font-weight: 600; color: var(--text); }
+.dp-team-sub  { font-size: 11px; color: var(--text2); }
+.dp-meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 8px; margin-top: 12px; }
+.dp-meta { background: var(--surface2); border-radius: var(--radius); padding: 9px 12px; border: 0.5px solid var(--border); }
+.dp-meta-label { font-size: 10px; color: var(--textm); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 3px; }
+.dp-meta-val   { font-size: 12px; font-weight: 500; color: var(--text); line-height: 1.3; }
+
+/* ── Traffic tab ─────────────────────────────────────────── */
+.match-selector-bar {
+  display: flex; gap: 8px; flex-wrap: wrap;
+  align-items: center; margin-bottom: 20px;
+}
+.match-selector-bar select,
+.match-selector-bar button {
+  padding: 7px 12px;
+  border: 0.5px solid var(--border2);
+  border-radius: var(--radius);
+  font-size: 13px; font-family: inherit;
+  background: var(--surface); color: var(--text);
+  cursor: pointer;
+}
+.match-selector-bar select:focus,
+.match-selector-bar button:focus { outline: none; border-color: var(--accent); }
+.match-selector-bar button {
+  background: var(--accent); color: #fff;
+  border-color: var(--accent); font-weight: 500;
+}
+.match-selector-bar button:hover { background: #185FA5; }
+
+.traffic-info-bar {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 18px;
+  display: flex; align-items: flex-start; justify-content: space-between;
+  flex-wrap: wrap; gap: 10px;
+}
+.traffic-match-title { font-size: 15px; font-weight: 600; color: var(--text); }
+.traffic-match-sub   { font-size: 12px; color: var(--text2); margin-top: 3px; line-height: 1.5; }
+.match-day-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--red-bg); color: var(--red-text);
+  font-size: 11px; font-weight: 600;
+  padding: 4px 10px; border-radius: 20px;
+  border: 0.5px solid #F7C1C1;
+  flex-shrink: 0;
+}
+
+.traffic-kpi { display: grid; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); gap: 10px; margin-bottom: 18px; }
+.tkpi { background: var(--surface); border-radius: var(--radius); padding: 11px 13px; border: 0.5px solid var(--border); }
+.tkpi-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text2); margin-bottom: 4px; }
+.tkpi-val   { font-size: 20px; font-weight: 600; line-height: 1; }
+.tkpi-val.sm { font-size: 14px; }
+.tkpi-sub   { font-size: 11px; color: var(--textm); margin-top: 3px; }
+
+.traffic-placeholder {
+  background: var(--surface);
+  border: 0.5px dashed var(--border2);
+  border-radius: 12px;
+  padding: 48px 24px;
+  text-align: center;
+  color: var(--textm);
+  font-size: 14px;
+}
+.traffic-placeholder strong { display: block; font-size: 15px; color: var(--text2); margin-bottom: 6px; }
+
+.loading-spinner {
+  background: var(--surface);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 40px;
+  text-align: center;
+  color: var(--text2);
+  font-size: 13px;
+}
+
+/* ── Charts layout ───────────────────────────────────────── */
+.charts-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; margin-bottom: 14px; }
+.chart-card { background: var(--surface); border-radius: 12px; border: 0.5px solid var(--border); padding: 16px; }
+.chart-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+.chart-sub   { font-size: 11px; color: var(--text2); margin-bottom: 12px; }
+.chart-wrap  { position: relative; width: 100%; }
+.legend-row  { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 8px; font-size: 11px; color: var(--text2); }
+.ldot        { width: 10px; height: 10px; border-radius: 2px; display: inline-block; margin-right: 4px; vertical-align: middle; }
+
+/* ── Road table ──────────────────────────────────────────── */
+.road-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.road-table th {
+  text-align: left; padding: 7px 10px;
+  border-bottom: 1px solid var(--border2);
+  color: var(--text2); font-weight: 600;
+  font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em;
+  background: var(--surface2); white-space: nowrap;
+}
+.road-table td { padding: 7px 10px; border-bottom: 0.5px solid var(--border); }
+.road-table tr:last-child td { border-bottom: none; }
+.road-table tr:hover td { background: var(--surface2); }
+
+.spd-bar-wrap { display: flex; align-items: center; gap: 8px; }
+.spd-bar-bg   { height: 6px; background: var(--surface2); border-radius: 3px; flex: 1; overflow: hidden; min-width: 50px; }
+.spd-bar      { height: 6px; border-radius: 3px; }
+.ratio-pill   { font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 10px; }
+.r-over { background: var(--green-bg); color: var(--green-text); }
+.r-norm { background: var(--amber-bg); color: var(--amber-text); }
+.r-cong { background: var(--red-bg); color: var(--red-text); }
+
+/* ── Stadium tab ─────────────────────────────────────────── */
+.stadium-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
+.stadium-card { background: var(--surface); border-radius: 12px; border: 0.5px solid var(--border); padding: 14px; }
+.stadium-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+.stadium-fifa { font-size: 10px; color: var(--textm); margin-bottom: 6px; }
+.stadium-loc  { font-size: 11px; color: var(--text2); margin-bottom: 8px; }
+.s-bar-bg { height: 5px; background: var(--surface2); border-radius: 3px; margin-bottom: 5px; overflow: hidden; }
+.s-bar    { height: 5px; border-radius: 3px; background: var(--accent); }
+.s-stats  { display: flex; justify-content: space-between; font-size: 11px; color: var(--text2); }
+.s-link   { font-size: 10px; color: var(--accent); margin-top: 7px; display: inline-block; }
+
+/* ── Filters ─────────────────────────────────────────────── */
+.filter-bar { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; align-items: center; }
+input[type=text], select {
+  padding: 7px 11px;
+  border: 0.5px solid var(--border2);
+  border-radius: var(--radius);
+  font-size: 13px; font-family: inherit;
+  background: var(--surface); color: var(--text);
+}
+input[type=text]:focus, select:focus { outline: none; border-color: var(--accent); }
+.badge-count { font-size: 11px; font-weight: 500; padding: 3px 9px; background: var(--surface2); border-radius: 10px; color: var(--text2); }
+
+/* ── Notification banner (traffic alert) ─────────────────── */
+.notice-banner {
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  font-size: 11px;
+  margin-top: 10px;
+  border: 0.5px solid;
+}
+.notice-amber { background: var(--amber-bg); color: var(--amber-text); border-color: #FAC775; }
+.notice-green { background: var(--green-bg); color: var(--green-text); border-color: #9FE1CB; }
+
+/* ── Footer ──────────────────────────────────────────────── */
+.footer {
+  text-align: center; padding: 18px;
+  font-size: 11px; color: var(--textm);
+  border-top: 0.5px solid var(--border);
+  margin-top: 10px;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 680px) {
+  .dp-cols { grid-template-columns: 1fr; }
+  .kpi-val { font-size: 20px; }
+  .main    { padding: 14px 14px; }
+}
