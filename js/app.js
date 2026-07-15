@@ -171,14 +171,16 @@ async function loadTrafficData() {
 
   try {
     // Fetch both CSVs from the match data folder
-    const [matchRes, xdRes] = await Promise.all([
+    const [matchRes, xdRes, contentsRes] = await Promise.all([
       fetch(`data/${folder}/${folder}.csv`),
       fetch(`data/${folder}/XD_Identification.csv`),
+      fetch(`data/${folder}/Contents.txt`),
     ]);
 
     if (!matchRes.ok || !xdRes.ok) throw new Error('CSV files not found');
 
     const [matchText, xdText] = await Promise.all([matchRes.text(), xdRes.text()]);
+    const contentsText = contentsRes.ok ? await contentsRes.text() : null;
 
     const xdMap  = buildXDMap(xdText);
     const metrics = computeTrafficMetrics(matchText, xdMap);
@@ -187,7 +189,7 @@ async function loadTrafficData() {
     trafficMetrics = metrics;
     trafficMatchKey = folder;
 
-    renderTrafficDashboard(match, metrics);
+    renderTrafficDashboard(match, metrics, contentsText);
   } catch (err) {
     document.getElementById('traffic-content').innerHTML = `
       <div class="traffic-placeholder">
@@ -199,7 +201,7 @@ async function loadTrafficData() {
   }
 }
 
-function renderTrafficDashboard(match, metrics) {
+function renderTrafficDashboard(match, metrics, contentsText) {
   const { kpi, dates, matchDay, roadSummary, keyRoads } = metrics;
   const maxSpeed = Math.max(...roadSummary.map(r => r.avgSpeed));
 
@@ -210,6 +212,7 @@ function renderTrafficDashboard(match, metrics) {
         <div class="traffic-match-sub">
           Match #${match.matchNo} · ${match.round} · ${match.venue}, ${match.city} · Kickoff ${match.time} ${fmtDate(match.date)}<br>
           INRIX XD · ${dates.length} days (${dates.map(fmtDateShort).join(', ')}) · ${kpi.totalSegments} segments
+          ${contentsText ? `<div style="margin-top:8px;font-size:11px;color:var(--text2);background:var(--surface2);border-radius:var(--radius);padding:7px 10px;border:0.5px solid var(--border);line-height:1.5"><span style="font-weight:600;color:var(--text)">Coverage area: </span>${contentsText.trim()}</div>` : ''}
         </div>
       </div>
       <span class="match-day-badge">⚽ Match day: ${fmtDateShort(matchDay)}</span>
