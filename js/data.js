@@ -194,6 +194,43 @@ const MATCHES = [
     venue: 'Arrowhead Stadium', city: 'Kansas City', state: 'MO',
     lat: 39.0489, lng: -94.4839, hasTraffic: false,
   },
+  // ── Semifinals ───────────────────────────────────────────
+  {
+    folder:  'SF_FR_SP',
+    matchNo: 101, round: 'Semifinal', roundCode: 'SF',
+    t1: 'France', t2: 'Spain',
+    date: '2026-07-14', time: '3:00 PM ET',
+    venue: 'AT&T Stadium', city: 'Arlington / Dallas', state: 'TX',
+    lat: 32.7473, lng: -97.0945, hasTraffic: true,
+  },
+  {
+    folder:  null,
+    matchNo: 102, round: 'Semifinal', roundCode: 'SF',
+    t1: 'England', t2: 'Argentina',
+    date: '2026-07-15', time: '3:00 PM ET',
+    venue: 'Mercedes-Benz Stadium', city: 'Atlanta', state: 'GA',
+    lat: 33.7554, lng: -84.4008, hasTraffic: false,
+  },
+
+  // ── Third Place ───────────────────────────────────────────
+  {
+    folder:  null,
+    matchNo: 103, round: 'Third Place', roundCode: 'TP',
+    t1: 'France', t2: 'England',
+    date: '2026-07-18', time: '5:00 PM ET',
+    venue: 'Hard Rock Stadium', city: 'Miami Gardens / Miami', state: 'FL',
+    lat: 25.9580, lng: -80.2389, hasTraffic: false,
+  },
+
+  // ── Final ─────────────────────────────────────────────────
+  {
+    folder:  'F_SP_AR',
+    matchNo: 104, round: 'Final', roundCode: 'F',
+    t1: 'Spain', t2: 'Argentina',
+    date: '2026-07-19', time: '3:00 PM ET',
+    venue: 'MetLife Stadium', city: 'East Rutherford / New York', state: 'NJ',
+    lat: 40.8135, lng: -74.0745, hasTraffic: true,
+  },
 ];
 
 const STADIUMS = {
@@ -212,7 +249,7 @@ const STADIUMS = {
 
 const FLAGS = {
   USA:'🇺🇸', Paraguay:'🇵🇾', Haiti:'🇭🇹', Scotland:'SC', Brazil:'🇧🇷',
-  Morocco:'🇲🇦', Qatar:'🇶🇦', Switzerland:'SW', Ecuador:'🇪🇨', Germany:'GE',
+  Morocco:'🇲🇦', Qatar:'🇶🇦', Switzerland:'🇨🇭', Ecuador:'🇪🇨', Germany:'🇩🇪',
   'Curaçao':'🇨🇼', Netherlands:'🇳🇱', Japan:'🇯🇵', 'Saudi Arabia':'🇸🇦',
   Uruguay:'🇺🇾', Spain:'🇪🇸', 'Cabo Verde':'🇨🇻', Iran:'🇮🇷',
   'New Zealand':'🇳🇿', Belgium:'🇧🇪', Egypt:'🇪🇬', France:'🇫🇷',
@@ -243,10 +280,13 @@ const CONTINENT = {
   'Ivory Coast':'Africa', 'Côte d\'Ivoire':'Africa',
 };
 
-const ROUND_ORDER = ['Round of 32', 'Round of 16', 'Quarterfinal'];
+const ROUND_ORDER = ['Round of 32', 'Round of 16', 'Quarterfinal', 'Semifinal', 'Third Place', 'Final'];
 
 const ROUND_STYLE = {
   'Round of 32':  { pill: 'pill-r32',  label: 'Round of 32' },
   'Round of 16':  { pill: 'pill-r16',  label: 'Round of 16' },
   'Quarterfinal': { pill: 'pill-qf',   label: 'Quarterfinal' },
+  'Semifinal':    { pill: 'pill-sf',   label: 'Semifinal' },
+  'Third Place':  { pill: 'pill-tp',   label: 'Third Place' },
+  'Final':        { pill: 'pill-final',label: 'Final' },
 };

@@ -123,6 +123,9 @@ a:hover { text-decoration: underline; }
 .pill-r32  { background: #E6F1FB; color: #185FA5; }
 .pill-r16  { background: #E1F5EE; color: #0F6E56; }
 .pill-qf   { background: #FAEEDA; color: #854F0B; }
+.pill-sf    { background: #FBEAF0; color: #993556; }
+.pill-tp    { background: #f0f0ed; color: #52514e; }
+.pill-final { background: #1a6b2e; color: #fff; }
 .round-count { font-size: 11px; color: var(--textm); }
 
 .match-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(192px, 1fr)); gap: 8px; }

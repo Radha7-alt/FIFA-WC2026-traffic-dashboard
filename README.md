@@ -1,6 +1,13 @@
-# FIFA World Cup 2026 - Traffic Impact Dashboard
+# FIFA World Cup 2026 — Traffic Impact Dashboard
 
 INRIX XD traffic analysis tool for FIFA World Cup 2026 US host venues.  
+Built for the AIT Lab, Texas State University.
+
+## Live dashboard
+
+[https://your-project-name.vercel.app](https://your-project-name.vercel.app)
+
+---
 
 ## Live dashboard
 
@@ -14,56 +21,79 @@ fifa-dashboard/
 ├── css/
 │   └── style.css         ← all styles
 ├── js/
-│   ├── data.js           ← static match registry + stadium lookup
+│   ├── data.js           ← match registry, stadium lookup, flags
 │   ├── traffic.js        ← CSV parsing + traffic metric computation
 │   ├── charts.js         ← all Chart.js rendering functions
 │   └── app.js            ← UI controller (tabs, match list, detail panel)
 ├── data/
-│   ├── R32_SP_AUT/
-│   │   ├── R32_SP_AUT.csv
-│   │   └── XD_Identification.csv
-│   ├── R32_BR_JA/
-│   │   ├── R32_BR_JA.csv
-│   │   └── XD_Identification.csv
-│   ├── R32_FR_SW/
-│   │   ├── R32_FR_SW.csv
-│   │   └── XD_Identification.csv
-│   ├── R32_GE_PY/
-│   │   ├── R32_GE_PY.csv
-│   │   └── XD_Identification.csv
-│   ├── R32_IC_NO/
-│   │   ├── R32_IC_NO.csv
-│   │   └── XD_Identification.csv
-│   ├── R32_SA_CA/
-│   │   ├── R32_SA_CA.csv
-│   │   └── XD_Identification.csv
 │   ├── R32_AUS_EG/
 │   │   ├── R32_AUS_EG.csv
-│   │   └── XD_Identification.csv
+│   │   ├── XD_Identification.csv
+│   │   └── Contents.txt
+│   ├── R32_BR_JA/
+│   │   ├── R32_BR_JA.csv
+│   │   ├── XD_Identification.csv
+│   │   └── Contents.txt
+│   ├── R32_FR_SW/
+│   │   ├── R32_FR_SW.csv
+│   │   ├── XD_Identification.csv
+│   │   └── Contents.txt
+│   ├── R32_GE_PY/
+│   │   ├── R32_GE_PY.csv
+│   │   ├── XD_Identification.csv
+│   │   └── Contents.txt
+│   ├── R32_IC_NO/
+│   │   ├── R32_IC_NO.csv
+│   │   ├── XD_Identification.csv
+│   │   └── Contents.txt
+│   ├── R32_SA_CA/
+│   │   ├── R32_SA_CA.csv
+│   │   ├── XD_Identification.csv
+│   │   └── Contents.txt
+│   ├── R32_SP_AUT/
+│   │   ├── R32_SP_AUT.csv
+│   │   ├── XD_Identification.csv
+│   │   └── Contents.txt
 │   ├── R16_BR_NO/
 │   │   ├── R16_BR_NO.csv
-│   │   └── XD_Identification.csv
+│   │   ├── XD_Identification.csv
+│   │   └── Contents.txt
 │   ├── R16_CAN_MO/
 │   │   ├── R16_CAN_MO.csv
-│   │   └── XD_Identification.csv
+│   │   ├── XD_Identification.csv
+│   │   └── Contents.txt
 │   ├── R16_PAR_FR/
 │   │   ├── R16_PAR_FR.csv
-│   │   └── XD_Identification.csv
+│   │   ├── XD_Identification.csv
+│   │   └── Contents.txt
 │   ├── R16_POR_SP/
 │   │   ├── R16_POR_SP.csv
-│   │   └── XD_Identification.csv
+│   │   ├── XD_Identification.csv
+│   │   └── Contents.txt
 │   ├── QF_FR_MO/
 │   │   ├── QF_FR_MO.csv
-│   │   └── XD_Identification.csv
-│   └── QF_SP_BEL/
-│       ├── QF_SP_BEL.csv
-│       └── XD_Identification.csv
+│   │   ├── XD_Identification.csv
+│   │   └── Contents.txt
+│   ├── QF_SP_BEL/
+│   │   ├── QF_SP_BEL.csv
+│   │   ├── XD_Identification.csv
+│   │   └── Contents.txt
+│   ├── SF_FR_SP/
+│   │   ├── SF_FR_SP.csv
+│   │   ├── XD_Identification.csv
+│   │   └── Contents.txt
+│   └── F_SP_AR/
+│       ├── F_SP_AR.csv
+│       ├── XD_Identification.csv
+│       └── Contents.txt
 └── README.md
 ```
 
+---
+
 ## Match registry
 
-22 total matches across R32, R16, and QF. 13 have INRIX XD traffic data; 9 are schedule-only.
+26 total matches across R32, R16, QF, SF, Third Place, and Final. 15 have INRIX XD traffic data; 11 are schedule-only.
 
 ### With INRIX traffic data (`hasTraffic: true`)
 
@@ -82,6 +112,8 @@ fifa-dashboard/
 | R16_POR_SP | 93 | R16 | Portugal vs Spain | Jul 6 | AT&T Stadium, Dallas TX |
 | QF_FR_MO | 97 | QF | France vs Morocco | Jul 9 | Gillette Stadium, Boston MA |
 | QF_SP_BEL | 98 | QF | Spain vs Belgium | Jul 10 | SoFi Stadium, Los Angeles CA |
+| SF_FR_SP | 101 | SF | France vs Spain | Jul 14 | AT&T Stadium, Dallas TX |
+| F_SP_AR | 104 | F | Spain vs Argentina | Jul 19 | MetLife Stadium, New York NJ |
 
 ### Schedule only — no traffic data (`hasTraffic: false`)
 
@@ -96,21 +128,28 @@ fifa-dashboard/
 | 95 | R16 | Argentina vs Egypt | Jul 7 | Mercedes-Benz Stadium, Atlanta GA |
 | 99 | QF | Norway vs England | Jul 11 | Hard Rock Stadium, Miami FL |
 | 100 | QF | Argentina vs Switzerland | Jul 11 | Arrowhead Stadium, Kansas City MO |
+| 102 | SF | England vs Argentina | Jul 15 | Mercedes-Benz Stadium, Atlanta GA |
+| 103 | Third Place | France vs England | Jul 18 | Hard Rock Stadium, Miami FL |
+
+---
 
 ## Data setup
 
-Each match folder in `data/` needs exactly two files:
+Each match folder in `data/` needs exactly three files:
 
 | File | Source | Description |
 |---|---|---|
 | `{FOLDER}.csv` | INRIX XD download | Speed, travel time, confidence per segment per 5-min interval |
 | `XD_Identification.csv` | INRIX XD download | XD segment metadata (road name, bearing, coordinates) |
+| `Contents.txt` | INRIX XD download | Plain text description of road corridors and date range covered |
 
 **CSV column requirements:**
 
 `{FOLDER}.csv` — `xd_id, measurement_tstamp, speed, historical_average_speed, reference_speed, travel_time_minutes, confidence_score, cvalue`
 
 `XD_Identification.csv` — `xd, road-name, bearing, miles, frc, county, state, zip, timezone_name, start_latitude, start_longitude, end_latitude, end_longitude`
+
+---
 
 ## Data flags explained
 
@@ -119,9 +158,11 @@ Each match entry in `js/data.js` has a `hasTraffic` field:
 - `hasTraffic: true` — match card shows 📊, detail panel links to Traffic Impact tab, match appears in traffic dropdown
 - `hasTraffic: false` — match card shows no icon, detail panel shows a red "No INRIX XD traffic data available" notice, match is excluded from traffic dropdown
 
+---
+
 ## Adding a new match with traffic data
 
-1. Create `data/{FOLDER}/` and place `{FOLDER}.csv` and `XD_Identification.csv` inside it.
+1. Create `data/{FOLDER}/` and place `{FOLDER}.csv`, `XD_Identification.csv`, and `Contents.txt` inside it.
 2. Add an entry to `MATCHES` in `js/data.js`:
 
 ```js
@@ -138,30 +179,11 @@ Each match entry in `js/data.js` has a `hasTraffic` field:
 },
 ```
 
-3. Add `'Semifinal'` and `'Final'` to `ROUND_ORDER` and `ROUND_STYLE` in `js/data.js`:
-
-```js
-const ROUND_ORDER = ['Round of 32', 'Round of 16', 'Quarterfinal', 'Semifinal', 'Final'];
-
-const ROUND_STYLE = {
-  ...existing entries...,
-  'Semifinal': { pill: 'pill-sf',    label: 'Semifinal' },
-  'Final':     { pill: 'pill-final', label: 'Final' },
-};
-```
-
-4. Add the pill styles to `css/style.css`:
-
-```css
-.pill-sf    { background: #FBEAF0; color: #993556; }
-.pill-final { background: #1a6b2e; color: #fff; }
-```
-
-5. Done — the match card, traffic loader, and all charts update automatically.
+3. Done — the match card, traffic loader, and all charts update automatically.
 
 ## Adding a schedule-only match (no traffic data)
 
-Same as above but set `folder: null` and `hasTraffic: false`. No CSV files needed.
+Same as above but set `folder: null` and `hasTraffic: false`. No files needed.
 
 ```js
 {
@@ -177,18 +199,28 @@ Same as above but set `folder: null` and `hasTraffic: false`. No CSV files neede
 },
 ```
 
+---
+
+## Folder naming convention
+
+Folders follow the pattern `{ROUND}_{TEAM1}_{TEAM2}`:
+
+| Prefix | Round |
+|---|---|
+| `R32_` | Round of 32 |
+| `R16_` | Round of 16 |
+| `QF_` | Quarterfinal |
+| `SF_` | Semifinal |
+| `F_` | Final |
+
+Example: `R32_SP_AUT` = Round of 32, Spain vs Austria
+
+---
+
 ## Hosting
 
-### GitHub Pages (recommended)
-```bash
-git init
-git add .
-git commit -m "FIFA WC2026 traffic dashboard"
-git branch -M main
-git remote add origin https://github.com/YOUR_ORG/fifa-dashboard.git
-git push -u origin main
-# Enable GitHub Pages → Settings → Pages → Branch: main → / (root)
-```
+### Vercel (recommended)
+Push to GitHub, then import the repo at [vercel.com](https://vercel.com). Set framework to **Other**, leave all build settings blank, and deploy. Vercel auto-redeploys on every `git push`.
 
 ### Local development
 The dashboard uses `fetch()` to load CSVs, so it **must** be served over HTTP — not opened as a local file.

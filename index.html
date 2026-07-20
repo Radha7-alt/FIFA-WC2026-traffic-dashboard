@@ -15,7 +15,7 @@
       <div class="brand-icon">⚽</div>
       <div>
         <div class="brand-title">FIFA World Cup 2026 - Traffic Impact</div>
-        <div class="brand-sub">INRIX XD analysis · R32 → QF · US venues</div>
+        <div class="brand-sub">INRIX XD analysis · R32 → Final · US venues</div>
       </div>
     </div>
     <nav class="nav-tabs">
@@ -33,8 +33,8 @@
   <div class="kpi-row">
     <div class="kpi">
       <div class="kpi-label">Total matches</div>
-      <div class="kpi-val">22</div>
-      <div class="kpi-sub">13 with INRIX data</div>
+      <div class="kpi-val">26</div>
+      <div class="kpi-sub">15 with INRIX data</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">US stadiums</div>
@@ -43,12 +43,12 @@
     </div>
     <div class="kpi">
       <div class="kpi-label">Rounds covered</div>
-      <div class="kpi-val">3</div>
-      <div class="kpi-sub">R32 · R16 · QF</div>
+      <div class="kpi-val">6</div>
+      <div class="kpi-sub">R32 · R16 · QF · SF · TP · F</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">INRIX XD folders</div>
-      <div class="kpi-val">13</div>
+      <div class="kpi-val">15</div>
       <div class="kpi-sub">One per match</div>
     </div>
     <div class="kpi">
@@ -76,7 +76,7 @@
         </div>
         <button class="dp-close" onclick="closeDetail()" aria-label="Close detail">×</button>
       </div>
-      <div class="dp-cols"     id="dp-cards"></div>
+      <div class="dp-cols"      id="dp-cards"></div>
       <div class="dp-meta-grid" id="dp-meta"></div>
     </div>
 
@@ -87,6 +87,9 @@
         <option>Round of 32</option>
         <option>Round of 16</option>
         <option>Quarterfinal</option>
+        <option>Semifinal</option>
+        <option>Third Place</option>
+        <option>Final</option>
       </select>
       <select id="venueFilter" onchange="applyFilters()">
         <option value="">All venues</option>
@@ -102,7 +105,7 @@
         <option>NRG Stadium</option>
         <option>SoFi Stadium</option>
       </select>
-      <span id="match-count-badge" class="badge-count">22 matches</span>
+      <span id="match-count-badge" class="badge-count">26 matches</span>
     </div>
 
     <div id="matches-container"></div>
@@ -123,7 +126,6 @@
     <div id="traffic-content">
       <div class="traffic-placeholder">
         <strong>Select a match above and click "Load traffic data"</strong>
-        Click any match card on the Matches tab to jump straight here.
       </div>
     </div>
   </div>
@@ -150,7 +152,7 @@
       </div>
       <div class="chart-card">
         <div class="chart-title">Tracked matches by round</div>
-        <div class="chart-sub">Distribution of the 13 INRIX-tracked matches across R32, R16, QF</div>
+        <div class="chart-sub">Distribution of the 15 INRIX-tracked matches across all rounds</div>
         <div class="chart-wrap" style="height:280px">
           <canvas id="roundChart" role="img" aria-label="Bar chart of tracked matches by round">Matches by round</canvas>
         </div>
@@ -159,7 +161,7 @@
     <div class="charts-row">
       <div class="chart-card" style="grid-column:1/-1">
         <div class="chart-title">Tracked matches per venue</div>
-        <div class="chart-sub">Which stadiums appear in the 13 INRIX-tracked folders</div>
+        <div class="chart-sub">Which stadiums appear in the 15 INRIX-tracked folders</div>
         <div class="chart-wrap" style="height:220px">
           <canvas id="trackedVenueChart" role="img" aria-label="Bar chart of tracked matches per venue">Tracked matches per venue</canvas>
         </div>
