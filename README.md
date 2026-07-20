@@ -1,7 +1,6 @@
 # FIFA World Cup 2026 — Traffic Impact Dashboard
 
 INRIX XD traffic analysis tool for FIFA World Cup 2026 US host venues.  
-Built for the AIT Lab, Texas State University.
 
 ## Live dashboard
 
