@@ -5,12 +5,6 @@ Built for the AIT Lab, Texas State University.
 
 ## Live dashboard
 
-[https://your-project-name.vercel.app](https://your-project-name.vercel.app)
-
----
-
-## Live dashboard
-
 https://fifa-wc-2026-traffic-dashboard.vercel.app/ 
 
 ## Repo structure
